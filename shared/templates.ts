@@ -1,0 +1,185 @@
+// 关注初音未来谢谢喵，ilovemiku520 / Please follow Hatsune Miku, thank you meow, ilovemiku520.
+import type { Resume, Template } from "./schema.js";
+export const templates: Template[] = [
+  {
+    id: "classic-blue",
+    name: "经典蓝 · 双栏",
+    layout: "classic",
+    accent: "#216c9e",
+    font: "sans",
+    fontSize: 10,
+    spacing: 1.5,
+  },
+  {
+    id: "quiet-minimal",
+    name: "留白 · 单栏",
+    layout: "minimal",
+    accent: "#334155",
+    font: "sans",
+    fontSize: 10.5,
+    spacing: 1.6,
+  },
+  {
+    id: "sage-editorial",
+    name: "青野 · 双栏",
+    layout: "editorial",
+    accent: "#35665d",
+    font: "serif",
+    fontSize: 10,
+    spacing: 1.5,
+  },
+];
+export const exampleResume: Resume = {
+  version: 1,
+  profile: {
+    name: "林予安",
+    headline: "数据分析 / 产品设计实习",
+    email: "hello@example.com",
+    phone: "000-0000-0000",
+    location: "意向城市 · 可远程",
+    website: "https://example.com",
+    summary:
+      "用数据理解问题，用清晰的设计推动解决。以下为虚构示例，请替换为自己的真实经历。",
+  },
+  template: templates[0],
+  contactLinks: false,
+  notes:
+    "突出项目应用价值；区分已验证结果与设计目标；专业课程与开发工具分开；保留重要项目链接。",
+  sections: [
+    {
+      id: "education",
+      title: "教育背景",
+      placement: "side",
+      visible: true,
+      entries: [
+        {
+          id: "school",
+          title: "示例大学",
+          subtitle: "统计学 · 本科",
+          period: "2023.09 — 2027.06",
+          bullets: ["专业课程：概率论、数理统计、多元统计分析、时间序列分析。"],
+          url: "",
+          linkLabel: "",
+          evidence: "none",
+        },
+      ],
+    },
+    {
+      id: "skills",
+      title: "专业基础与工具",
+      placement: "side",
+      visible: true,
+      entries: [
+        {
+          id: "skills-item",
+          title: "分析与实现",
+          subtitle: "",
+          period: "",
+          bullets: [
+            "统计学基础：参数估计、假设检验、回归分析。",
+            "分析工具：Python、SQL、Excel。",
+            "产品实践：需求整理、原型设计、结果复核。",
+          ],
+          url: "",
+          linkLabel: "",
+          evidence: "none",
+        },
+      ],
+    },
+    {
+      id: "experience",
+      title: "实习与兼职",
+      placement: "side",
+      visible: true,
+      entries: [
+        {
+          id: "intern",
+          title: "示例机构 · 分析实习",
+          subtitle: "虚构经历，仅用于排版演示",
+          period: "2026.07 — 至今",
+          bullets: [
+            "整理业务数据口径，制作可重复更新的分析报告。",
+            "记录数据缺失与异常，复核分析结论。",
+          ],
+          url: "",
+          linkLabel: "",
+          evidence: "none",
+        },
+      ],
+    },
+    {
+      id: "projects",
+      title: "重点项目",
+      placement: "main",
+      visible: true,
+      entries: [
+        {
+          id: "analysis-project",
+          title: "零售洞察 · 经营分析工作台",
+          subtitle: "数据分析 / 指标设计",
+          period: "2026.05 — 2026.07",
+          bullets: [
+            "应用价值：围绕销售结构与库存周转建立指标视图，帮助定位需要进一步调查的问题。",
+            "方法与交付：完成数据清洗、分组对比及可视化，保留分析过程与口径说明。",
+            "结果与边界：此处填写可核实的样本规模、对照结果与局限；不填写未经测量的业务提升。",
+          ],
+          url: "https://example.com/portfolio",
+          linkLabel: "项目说明（点击查看）",
+          evidence: "none",
+        },
+        {
+          id: "design-project",
+          title: "微光计划 · 社区互动设计",
+          subtitle: "产品设计 / 机制设计",
+          period: "2026.08 — 至今",
+          bullets: [
+            "设计目标：围绕内容发现与持续参与，设计任务反馈和轻量互动机制。",
+            "主要工作：梳理用户路径、激励规则与内容分发，制作可讨论的交互原型。",
+            "验证边界：设计尚未在真实社区落地，缺少 A/B 实验与用户行为数据，不能推断留存提升。",
+          ],
+          url: "",
+          linkLabel: "",
+          evidence: "prototype",
+        },
+      ],
+    },
+    {
+      id: "other",
+      title: "其他项目",
+      placement: "main",
+      visible: true,
+      entries: [
+        {
+          id: "notes-tool",
+          title: "阅读笔记整理工具",
+          subtitle: "",
+          period: "",
+          bullets: ["整理标签与全文检索需求，探索个人知识资料的归档方式。"],
+          url: "",
+          linkLabel: "",
+          evidence: "prototype",
+        },
+      ],
+    },
+    {
+      id: "interests",
+      title: "阅读与游戏体验",
+      placement: "full",
+      visible: true,
+      entries: [
+        {
+          id: "interests-item",
+          title: "",
+          subtitle: "",
+          period: "",
+          bullets: [
+            "关注产品体验、叙事设计与策略系统；用具体体验描述兴趣，避免将游戏时长直接等同于专业能力。",
+          ],
+          url: "",
+          linkLabel: "",
+          evidence: "none",
+        },
+      ],
+    },
+  ],
+};

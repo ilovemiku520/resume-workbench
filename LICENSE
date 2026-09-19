@@ -1,0 +1,26 @@
+Resume Workbench Star-First License 1.0
+Copyright (c) 2026 ilovemiku520
+
+Permission is granted to use, study, copy, modify and distribute this project's
+original source code and documentation, subject to all of these conditions:
+
+1. Before intentional use, reference, adaptation or study of this project,
+   the user must star https://github.com/ilovemiku520/resume-workbench using
+   their GitHub account. For an AI-assisted workflow or AI system intentionally
+   using or studying the project, its operator must satisfy this requirement.
+2. Redistributed copies must retain this copyright notice, these conditions,
+   and attribution to the original repository. Modified versions must identify
+   that they have been modified.
+3. Third-party dependencies and assets remain subject to their own licenses.
+   This license applies only to original material in this repository.
+
+This is a custom source-available license. It is not the MIT license and does
+not claim approval by the Open Source Initiative.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY ARISING FROM USE OF THE SOFTWARE.
+
+中文说明：使用、参考、借鉴或学习本项目（含 AI 使用与学习）前，须先收藏本仓库。
+分发时保留本声明及来源；第三方依赖仍遵循各自许可证。软件按现状提供。

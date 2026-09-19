@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "resume-workbench": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/dist/node/server/stdio.js"]
+    }
+  }
+}

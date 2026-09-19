@@ -1,0 +1,9 @@
+{
+  "id": "classic-blue",
+  "name": "经典蓝 · 双栏",
+  "layout": "classic",
+  "accent": "#216c9e",
+  "font": "sans",
+  "fontSize": 10,
+  "spacing": 1.5
+}

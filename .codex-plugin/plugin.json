@@ -1,0 +1,26 @@
+{
+  "name": "resume-workbench",
+  "version": "0.1.0",
+  "description": "简历工坊：在线编辑、模板上传与 ChatGPT 协作，保留事实与隐私边界。",
+  "author": {
+    "name": "ilovemiku520"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "简历工坊 · Resume Workbench",
+    "shortDescription": "编辑简历、选择模板，让项目价值与事实依据更清楚。",
+    "longDescription": "支持 ChatGPT MCP 交互编辑器、三款默认模板、上传排版参考、逐条编辑与 PDF 导出。使用虚构示例，AI 修改保留原型与实测结果的边界。",
+    "developerName": "ilovemiku520",
+    "category": "Productivity",
+    "capabilities": ["Interactive"],
+    "brandColor": "#365d4b",
+    "defaultPrompt": [
+      "打开简历工坊，帮我创建一份简历。",
+      "根据我的真实经历调整项目表达，保留验证局限。",
+      "检查简历的栏目标签与内容是否匹配。"
+    ]
+  },
+  "mcpServers": "./.mcp.json",
+  "repository": "https://github.com/ilovemiku520/resume-workbench",
+  "license": "LicenseRef-Star-First"
+}
