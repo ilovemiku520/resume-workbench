@@ -5,7 +5,7 @@
 
 > **Star before use:** Star this repository before using, referencing, adapting, or studying it, including use or learning by AI systems. See the custom [Star-First license](LICENSE). This is source-available software, not an MIT/OSI-licensed project.
 
-![Actual workbench with entirely fictional sample data](assets/workbench.png)
+![Actual workbench with generic placeholders only](assets/workbench.png)
 
 ## What you can do
 
@@ -41,7 +41,7 @@ Reference PDF/image files stay in page memory until explicitly analyzed. AI styl
 
 MCP tools do not invoke a model or store resumes. ChatGPT provides the conversation model; the editor syncs context only on explicit interaction. Deploy HTTPS and follow [the connection guide](docs/CHATGPT.md). Source publication does not mean this project is listed in OpenAI's public plugin directory.
 
-All bundled identities, contact details, organizations and experiences are fictional. The repository does not contain the author's resume or photographs. Browser drafts use unencrypted localStorage; clear site data on shared computers. See [Privacy](docs/PRIVACY.md).
+New documents contain generic placeholder labels only, without predefined identities, contact details, organizations or experiences. The repository does not contain the author's resume or photographs. Browser drafts use unencrypted localStorage; clear site data on shared computers. See [Privacy](docs/PRIVACY.md).
 
 ## Development
 

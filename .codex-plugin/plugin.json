@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "简历工坊 · Resume Workbench",
     "shortDescription": "编辑简历、选择模板，让项目价值与事实依据更清楚。",
-    "longDescription": "支持 ChatGPT MCP 交互编辑器、三款默认模板、上传排版参考、逐条编辑与 PDF 导出。使用虚构示例，AI 修改保留原型与实测结果的边界。",
+    "longDescription": "支持 ChatGPT MCP 交互编辑器、三款默认模板、上传排版参考、逐条编辑与 PDF 导出。默认仅含通用占位词，AI 修改保留原型与实测结果的边界。",
     "developerName": "ilovemiku520",
     "category": "Productivity",
     "capabilities": ["Interactive"],

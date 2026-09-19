@@ -5,7 +5,7 @@ import { once } from "node:events";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
-import { exampleResume, templates } from "../shared/templates.js";
+import { blankResume, templates } from "../shared/templates.js";
 import {
   validateResume,
   TemplateSchema,
@@ -20,11 +20,11 @@ import { runAI } from "../server/ai.js";
 import OpenAI from "openai";
 
 test("documents and templates reject unsafe URLs, duplicate IDs, executable template keys", () => {
-  validateResume(exampleResume);
+  validateResume(blankResume);
   for (const template of templates) TemplateSchema.parse(template);
   assert.equal(safeUrl("javascript:alert(1)"), undefined);
   assert.equal(safeUrl("https://user:pass@example.com"), undefined);
-  const doc = structuredClone(exampleResume);
+  const doc = structuredClone(blankResume);
   doc.sections[0].id = doc.sections[1].id;
   assert.throws(() => validateResume(doc));
   assert.throws(() =>
@@ -35,25 +35,32 @@ test("documents and templates reject unsafe URLs, duplicate IDs, executable temp
   );
 });
 test("privacy removes repeated contacts and links without breaking schema or original", () => {
-  const doc = structuredClone(exampleResume);
+  const doc = structuredClone(blankResume);
+  doc.profile.email = "contact@example.com";
+  doc.profile.website = "https://example.com";
+  doc.sections[3].entries[0].url = "https://example.com/project";
   doc.notes += ` Contact ${doc.profile.email}; ${doc.profile.name}`;
   const redacted = redactContacts(doc);
   assert.ok(!JSON.stringify(redacted).includes(doc.profile.email));
   assert.ok(!JSON.stringify(redacted).includes(doc.profile.name));
   assert.ok(!JSON.stringify(redacted).includes("https://example.com"));
   validateResume(redacted);
-  assert.equal(doc.profile.name, exampleResume.profile.name);
+  assert.equal(doc.profile.name, blankResume.profile.name);
 });
 test("prototype claims are highlighted and hidden sections stay out of export", () => {
-  const doc = structuredClone(exampleResume);
+  const doc = structuredClone(blankResume);
+  doc.sections[3].entries[1].evidence = "prototype";
   doc.sections[3].entries[1].bullets.push("留存率提升了 30%");
   assert.ok(reviewResume(doc).some((x) => x.includes("真实用户效果")));
   doc.sections[0].visible = false;
-  assert.ok(!toMarkdown(doc).includes("示例大学"));
+  assert.ok(!toMarkdown(doc).includes(doc.sections[0].entries[0].title));
 });
 test("OpenAI structured request uses store:false and preserves evidence and links", async () => {
   let sent: Record<string, unknown> = {};
-  const changed = structuredClone(exampleResume);
+  const original = structuredClone(blankResume);
+  original.sections[3].entries[1].evidence = "prototype";
+  original.sections[3].entries[0].url = "https://example.com/project";
+  const changed = structuredClone(original);
   changed.sections[3].entries[1].evidence = "verified";
   changed.sections[3].entries[0].url = "https://evil.example";
   const client = new OpenAI({
@@ -92,7 +99,7 @@ test("OpenAI structured request uses store:false and preserves evidence and link
   const result = await runAI(
     {
       kind: "resume",
-      resume: exampleResume,
+      resume: original,
       instruction: "精简措辞",
       model: "gpt-5-mini",
     },
@@ -105,7 +112,7 @@ test("OpenAI structured request uses store:false and preserves evidence and link
     assert.equal(result.resume.sections[3].entries[1].evidence, "prototype");
     assert.equal(
       result.resume.sections[3].entries[0].url,
-      exampleResume.sections[3].entries[0].url,
+      original.sections[3].entries[0].url,
     );
   }
 });
@@ -166,7 +173,7 @@ test("HTTP API protects shared keys, rejects hostile origins, and handles MCP", 
   const base = `http://127.0.0.1:${address.port}`;
   const body = JSON.stringify({
     kind: "resume",
-    resume: exampleResume,
+    resume: blankResume,
     instruction: "检查",
     model: "gpt-5-mini",
   });
@@ -228,7 +235,7 @@ test("unprotected server key is never used", async () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         kind: "resume",
-        resume: exampleResume,
+        resume: blankResume,
         instruction: "检查",
         model: "gpt-5-mini",
       }),

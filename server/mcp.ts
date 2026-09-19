@@ -8,7 +8,7 @@ import {
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { z } from "zod";
-import { exampleResume, templates } from "../shared/templates.js";
+import { blankResume, templates } from "../shared/templates.js";
 import {
   ResumeSchema,
   reviewResume,
@@ -58,13 +58,13 @@ export function createMcpServer() {
     {
       title: "打开并编辑简历",
       description:
-        "Render a supplied resume as an editable UI and return its full structured data. For a new fictional sample, omit resume. For updates, pass the complete current resume; this tool does not read or overwrite stored documents. Preserve facts and explicitly retain unverified limitations.",
+        "Render a supplied resume as an editable UI and return its full structured data. For a new document containing only generic placeholders, omit resume. Placeholder labels are not candidate facts. For updates, pass the complete current resume; this tool does not read or overwrite stored documents. Preserve facts and explicitly retain unverified limitations.",
       inputSchema: { resume: ResumeSchema.optional() },
       annotations,
       _meta: { ui: { resourceUri: URI }, "openai/outputTemplate": URI },
     },
     async ({ resume }: { resume?: Resume }) => {
-      const doc = ResumeSchema.parse(resume || structuredClone(exampleResume));
+      const doc = ResumeSchema.parse(resume || structuredClone(blankResume));
       return {
         content: [{ type: "text", text: toMarkdown(doc) }],
         structuredContent: { resume: doc, checks: reviewResume(doc) },

@@ -19,7 +19,7 @@
 | 工具 | 输入 | 输出 |
 |---|---|---|
 | `list_resume_templates` | 空对象 | 默认模板与简历数据结构 |
-| `render_resume` | 可选完整 `resume`；省略则打开虚构示例 | 可编辑 UI、完整数据、文字稿 |
+| `render_resume` | 可选完整 `resume`；省略则打开通用占位模板 | 可编辑 UI、完整数据、文字稿 |
 | `review_resume` | 完整 `resume` | 标签、篇幅和原型成果的启发式检查 |
 
 MCP 不使用 API Key，也不消耗本服务的 OpenAI API 额度；宿主负责对话推理。独立网页的 `/api/ai` 是另一条可选路径。

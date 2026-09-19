@@ -20,7 +20,7 @@ import {
   Upload,
   X,
 } from "lucide-react";
-import { exampleResume, templates } from "../shared/templates";
+import { blankResume, templates } from "../shared/templates";
 import {
   redactContacts,
   reviewResume,
@@ -62,7 +62,7 @@ function firstDraft(): Resume {
     } catch {
       /* A broken local draft must not prevent opening the editor. */
     }
-  return structuredClone(exampleResume);
+  return structuredClone(blankResume);
 }
 function EntryView({ entry }: { entry: Entry }) {
   return (
@@ -672,7 +672,7 @@ function Workbench() {
           {tab === "profile" && (
             <>
               <div className="section-label">
-                基本资料 <span>示例均为虚构</span>
+                基本资料 <span>请替换通用占位词</span>
               </div>
               <div className="field-grid">
                 {Object.entries(labels).map(([key, label]) => (
@@ -1253,7 +1253,7 @@ function Workbench() {
           <ResumePreview doc={pending?.resume || doc} />
           <div className="preview-bottom">
             <LockKeyhole size={13} />
-            示例数据为虚构 · 个人草稿不进入项目仓库
+            默认仅含占位词 · 个人草稿不进入项目仓库
           </div>
         </section>
       </div>

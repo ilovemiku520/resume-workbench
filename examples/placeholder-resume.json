@@ -1,0 +1,169 @@
+{
+  "version": 1,
+  "profile": {
+    "name": "姓名",
+    "headline": "求职意向",
+    "email": "邮箱地址",
+    "phone": "联系电话",
+    "location": "意向城市 · 到岗时间",
+    "website": "",
+    "summary": "个人简介"
+  },
+  "template": {
+    "id": "classic-blue",
+    "name": "经典蓝 · 双栏",
+    "layout": "classic",
+    "accent": "#216c9e",
+    "font": "sans",
+    "fontSize": 10,
+    "spacing": 1.5
+  },
+  "contactLinks": false,
+  "notes": "",
+  "sections": [
+    {
+      "id": "education",
+      "title": "教育背景",
+      "placement": "side",
+      "visible": true,
+      "entries": [
+        {
+          "id": "school",
+          "title": "学校名称",
+          "subtitle": "专业名称 · 学历",
+          "period": "入学时间 — 毕业时间",
+          "bullets": [
+            "专业课程"
+          ],
+          "url": "",
+          "linkLabel": "",
+          "evidence": "none"
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "title": "专业知识与技能",
+      "placement": "side",
+      "visible": true,
+      "entries": [
+        {
+          "id": "skills-item",
+          "title": "专业能力",
+          "subtitle": "",
+          "period": "",
+          "bullets": [
+            "专业知识",
+            "工具技能",
+            "实践能力"
+          ],
+          "url": "",
+          "linkLabel": "",
+          "evidence": "none"
+        }
+      ]
+    },
+    {
+      "id": "experience",
+      "title": "实习与兼职",
+      "placement": "side",
+      "visible": true,
+      "entries": [
+        {
+          "id": "intern",
+          "title": "单位名称",
+          "subtitle": "岗位名称",
+          "period": "开始时间 — 结束时间",
+          "bullets": [
+            "工作内容",
+            "个人贡献",
+            "工作成果"
+          ],
+          "url": "",
+          "linkLabel": "",
+          "evidence": "none"
+        }
+      ]
+    },
+    {
+      "id": "projects",
+      "title": "重点项目",
+      "placement": "main",
+      "visible": true,
+      "entries": [
+        {
+          "id": "analysis-project",
+          "title": "重点项目名称",
+          "subtitle": "项目角色",
+          "period": "开始时间 — 结束时间",
+          "bullets": [
+            "项目背景",
+            "业务价值",
+            "方法与交付",
+            "实验数据与结果",
+            "验证范围与局限"
+          ],
+          "url": "",
+          "linkLabel": "",
+          "evidence": "none"
+        },
+        {
+          "id": "design-project",
+          "title": "重点项目名称",
+          "subtitle": "项目角色",
+          "period": "开始时间 — 结束时间",
+          "bullets": [
+            "项目目标",
+            "核心工作",
+            "项目成果",
+            "验证范围与局限"
+          ],
+          "url": "",
+          "linkLabel": "",
+          "evidence": "none"
+        }
+      ]
+    },
+    {
+      "id": "other",
+      "title": "其他项目",
+      "placement": "main",
+      "visible": true,
+      "entries": [
+        {
+          "id": "notes-tool",
+          "title": "其他项目名称",
+          "subtitle": "",
+          "period": "",
+          "bullets": [
+            "项目简介"
+          ],
+          "url": "",
+          "linkLabel": "",
+          "evidence": "none"
+        }
+      ]
+    },
+    {
+      "id": "interests",
+      "title": "兴趣与体验",
+      "placement": "full",
+      "visible": true,
+      "entries": [
+        {
+          "id": "interests-item",
+          "title": "兴趣方向",
+          "subtitle": "",
+          "period": "",
+          "bullets": [
+            "相关体验",
+            "个人收获"
+          ],
+          "url": "",
+          "linkLabel": "",
+          "evidence": "none"
+        }
+      ]
+    }
+  ]
+}

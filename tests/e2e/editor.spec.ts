@@ -1,6 +1,10 @@
 // 关注初音未来谢谢喵，ilovemiku520 / Please follow Hatsune Miku, thank you meow, ilovemiku520.
 import { test, expect } from "@playwright/test";
-import { exampleResume, templates } from "../../shared/templates";
+import { blankResume, templates } from "../../shared/templates";
+
+const testResume = structuredClone(blankResume);
+testResume.profile.email = "contact@example.com";
+testResume.sections[3].entries[0].url = "https://example.com/portfolio";
 
 test("edit, save, undo, reimport and keep contacts as plain text", async ({
   page,
@@ -30,15 +34,15 @@ test("edit, save, undo, reimport and keep contacts as plain text", async ({
   await expect(page.locator(".resume-sheet")).toHaveClass(/minimal/);
   await page.getByRole("button", { name: "撤销", exact: true }).click();
   await expect(page.locator(".resume-sheet")).toHaveClass(/classic/);
-  await page
-    .locator(".text-upload input")
-    .setInputFiles({
-      name: "resume.json",
-      mimeType: "application/json",
-      buffer: Buffer.from(JSON.stringify(exampleResume)),
-    });
+  await page.locator(".text-upload input").setInputFiles({
+    name: "resume.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(blankResume)),
+  });
   await expect(
-    page.getByTestId("resume-sheet").getByRole("heading", { name: "林予安" }),
+    page
+      .getByTestId("resume-sheet")
+      .getByRole("heading", { name: "姓名", exact: true }),
   ).toBeVisible();
   expect(errors).toEqual([]);
 });
@@ -48,21 +52,17 @@ test("JSON template upload, PDF reference, clear reference and responsive layout
   await page.goto("/");
   const pdf = await page.pdf({ format: "A4", printBackground: true });
   await page.getByRole("button", { name: "模板与排版", exact: true }).click();
-  await page
-    .getByLabel("上传模板")
-    .setInputFiles({
-      name: "template.json",
-      mimeType: "application/json",
-      buffer: Buffer.from(JSON.stringify(templates[2])),
-    });
+  await page.getByLabel("上传模板").setInputFiles({
+    name: "template.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(templates[2])),
+  });
   await expect(page.locator(".resume-sheet")).toHaveClass(/editorial/);
-  await page
-    .getByLabel("上传模板")
-    .setInputFiles({
-      name: "reference.pdf",
-      mimeType: "application/pdf",
-      buffer: pdf,
-    });
+  await page.getByLabel("上传模板").setInputFiles({
+    name: "reference.pdf",
+    mimeType: "application/pdf",
+    buffer: pdf,
+  });
   await expect(
     page.getByAltText("上传模板的排版参考，仅在本页保留"),
   ).toBeVisible();
@@ -80,6 +80,11 @@ test("API proposal requires apply, keeps contacts and can undo", async ({
   page,
 }) => {
   await page.goto("/");
+  await page.locator(".text-upload input").setInputFiles({
+    name: "test-resume.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(testResume)),
+  });
   let sent: any;
   await page.route("**/api/ai", async (route) => {
     sent = route.request().postDataJSON();
@@ -101,7 +106,7 @@ test("API proposal requires apply, keeps contacts and can undo", async ({
   );
   await expect(page.locator(".resume-headline")).toHaveText("产品设计实习");
   await expect(page.getByTestId("resume-sheet")).toContainText(
-    "hello@example.com",
+    "contact@example.com",
   );
   await expect(
     page
@@ -110,7 +115,7 @@ test("API proposal requires apply, keeps contacts and can undo", async ({
   ).toBeVisible();
   await page.getByRole("button", { name: "撤销", exact: true }).click();
   await expect(page.locator(".resume-headline")).toHaveText(
-    exampleResume.profile.headline,
+    blankResume.profile.headline,
   );
 });
 test("API credentials never enter local draft and script-like input stays text", async ({
@@ -167,17 +172,15 @@ test("self-contained MCP UI initializes, receives a document, and syncs redacted
     .toBe(true);
   await page.evaluate(
     (doc) =>
-      document
-        .querySelector("iframe")!
-        .contentWindow!.postMessage(
-          {
-            jsonrpc: "2.0",
-            method: "ui/notifications/tool-result",
-            params: { content: [], structuredContent: { resume: doc } },
-          },
-          "*",
-        ),
-    exampleResume,
+      document.querySelector("iframe")!.contentWindow!.postMessage(
+        {
+          jsonrpc: "2.0",
+          method: "ui/notifications/tool-result",
+          params: { content: [], structuredContent: { resume: doc } },
+        },
+        "*",
+      ),
+    testResume,
   );
   await frame.getByLabel("姓名", { exact: true }).fill("虚构编辑名");
   await frame.getByRole("button", { name: "AI 协作", exact: true }).click();
@@ -188,24 +191,22 @@ test("self-contained MCP UI initializes, receives a document, and syncs redacted
       (m: any) => m.method === "ui/update-model-context",
     ),
   );
-  expect(JSON.stringify(context)).not.toContain("hello@example.com");
+  expect(JSON.stringify(context)).not.toContain("contact@example.com");
   expect(JSON.stringify(context)).not.toContain("虚构编辑名");
-  const update = structuredClone(exampleResume);
+  const update = structuredClone(testResume);
   update.profile.name = "候选人";
   update.profile.email = "";
   update.profile.headline = "对话调整后的方向";
   await page.evaluate(
     (doc) =>
-      document
-        .querySelector("iframe")!
-        .contentWindow!.postMessage(
-          {
-            jsonrpc: "2.0",
-            method: "ui/notifications/tool-result",
-            params: { content: [], structuredContent: { resume: doc } },
-          },
-          "*",
-        ),
+      document.querySelector("iframe")!.contentWindow!.postMessage(
+        {
+          jsonrpc: "2.0",
+          method: "ui/notifications/tool-result",
+          params: { content: [], structuredContent: { resume: doc } },
+        },
+        "*",
+      ),
     update,
   );
   await expect(frame.locator(".resume-headline")).toHaveText(
@@ -213,7 +214,7 @@ test("self-contained MCP UI initializes, receives a document, and syncs redacted
   );
   await expect(frame.getByTestId("resume-sheet")).toContainText("虚构编辑名");
   await expect(frame.getByTestId("resume-sheet")).toContainText(
-    "hello@example.com",
+    "contact@example.com",
   );
   expect(errors).toEqual([]);
 });
