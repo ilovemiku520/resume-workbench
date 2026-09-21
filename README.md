@@ -1,5 +1,22 @@
 <p align="center"><img src="assets/readme-hero.svg" alt="Resume Workbench · 简历工坊" width="100%"></p>
 
+<!-- BEGIN RIGHTS NOTICE -->
+## 版权与使用限制 / Copyright and use restrictions
+
+**保留所有权利。未经著作权人事先书面许可，不得使用、运行、复制、修改或分发本项目受保护的原创内容，包括个人、学习、研究、非商业和商业用途，以及依法需要许可的 AI 使用。Star 不构成授权。**
+
+**All rights reserved. Prior written permission is required to use, run, copy, modify or distribute the project's protected original material, including personal, educational, research, non-commercial and commercial use, and AI use where permission is required by law. A GitHub Star does not grant permission.**
+
+完整条款见 [LICENSE](LICENSE)。第三方内容仍适用其各自许可；此前已授予的许可、法定权利及 GitHub 平台条款项下权利不受影响。本文中的安装、运行及开发说明仅为技术说明，不构成使用授权。
+
+See [LICENSE](LICENSE) for the full terms. Third-party licenses, previously granted permissions, statutory rights and rights under GitHub's Terms of Service remain unaffected. Setup, usage and development instructions are technical documentation, not permission to use the material.
+
+书面授权 / Permission requests: [ilovemiku520@outlook.com](mailto:ilovemiku520@outlook.com)
+
+关注初音未来谢谢喵，ilovemiku520  
+Please follow Hatsune Miku, thank you, meow. ilovemiku520
+<!-- END RIGHTS NOTICE -->
+
 <p align="center"><strong>把真实经历，写成清晰、有重点、可验证的简历。</strong><br><sub>Write your story. Keep your facts. Own your data.</sub></p>
 
 <p align="center">
@@ -7,13 +24,13 @@
   <a href="docs/CHATGPT.md"><img src="https://img.shields.io/badge/ChatGPT-MCP%20Apps-355d4a?style=flat-square" alt="ChatGPT MCP Apps"></a>
   <a href="#templates"><img src="https://img.shields.io/badge/Templates-3%20built--in-b3995d?style=flat-square" alt="3 built-in templates"></a>
   <a href="docs/PRIVACY.md"><img src="https://img.shields.io/badge/Privacy-local%20drafts-6f8479?style=flat-square" alt="Local browser drafts"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Star--First-89724f?style=flat-square" alt="Custom Star-First license"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-All%20Rights%20Reserved-89724f?style=flat-square" alt="All rights reserved"></a>
 </p>
 
 <p align="center"><strong>简体中文</strong> | <a href="README.en.md">English</a></p>
 <p align="center"><a href="#preview">界面预览</a> · <a href="#quick-start">快速开始</a> · <a href="#templates">模板系统</a> · <a href="#ai">AI 协作</a> · <a href="docs/CHATGPT.md">ChatGPT 插件</a> · <a href="docs/DEPLOYMENT.md">部署指南</a></p>
 
-> **使用前先 Star：** 使用、参考、借鉴或学习本项目（含 AI 使用与学习）前，均需先收藏本项目。源码采用自定义 [Star-First 许可](LICENSE)，不使用 MIT / OSI 开源许可标识。
+> **使用须经书面许可：** 保留所有权利；Star 不构成授权。完整条款见 [LICENSE](LICENSE)。
 
 ## 一份简历，三种协作方式
 

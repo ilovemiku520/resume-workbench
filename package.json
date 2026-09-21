@@ -2,6 +2,7 @@
   "name": "resume-workbench",
   "version": "0.1.0",
   "private": true,
+  "license": "UNLICENSED",
   "type": "module",
   "description": "A privacy-conscious resume editor and ChatGPT MCP plugin.",
   "engines": {
